@@ -1,0 +1,50 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<HBox fx:controller="UI.Controller"
+      xmlns:fx="http://javafx.com/fxml" alignment="center">
+
+    <VBox>
+        <TableView fx:id="tblCakes" editable="true">
+            <columns>
+                <TableColumn fx:id="colIdCake" text="Id">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="ID" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colNameCake" text="Amount">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="sum" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colIngredientsCake" text="Description">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="description" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colCaloriesCake" text="Date">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="date" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <TextField fx:id="txtCakeID" promptText="ID"/>
+        <TextField fx:id="txtCakeName" promptText="Amount"/>
+        <TextField fx:id="txtCakeIngredients" promptText="Description"/>
+        <TextField fx:id="txtCakeCalories" promptText="Date"/>
+        <Button fx:id="btnAddCake" text="Add Cake" onAction="#btnAddCakeClick"/>
+        <TextField fx:id="txtDate" promptText="Date To get all"/>
+        <Button fx:id="btnGetAllInADay" text="Add Cake" onAction="#btnGetAll"/>
+    </VBox>
+
+</HBox>
