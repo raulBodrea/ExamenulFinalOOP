@@ -44,7 +44,7 @@
         <TextField fx:id="txtCakeCalories" promptText="Date"/>
         <Button fx:id="btnAddCake" text="Add Cake" onAction="#btnAddCakeClick"/>
         <TextField fx:id="txtDate" promptText="Date To get all"/>
-        <Button fx:id="btnGetAllInADay" text="Add Cake" onAction="#btnGetAll"/>
+        <Button fx:id="btnGetAllInADay" text="Get All in a day" onAction="#btnGetAll"/>
     </VBox>
 
 </HBox>

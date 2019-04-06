@@ -57,13 +57,15 @@ public class InvoiceService {
         for(i = 0 ; i<3; i++){
             date[i] = Integer.parseInt(dateString[i]);
         }
+        System.out.println(date[0]);
         double sum = 0;
         for(String invoice: invoices.getAll()){
             String[] invoiceDateString = invoices.get(invoice).getDate().split("[.]");
             int[] invoiceDate = new int[3];
             for(i = 0 ; i<3; i++){
-                date[i] = Integer.parseInt(invoiceDateString[i]);
+                invoiceDate[i] = Integer.parseInt(invoiceDateString[i]);
             }
+            System.out.println(date[2] + " "+ invoiceDate[2]);
             if(date[0] == invoiceDate[0] && date[1] == invoiceDate[1] && date[2] == invoiceDate[2]) sum += invoices.get(invoice).getSum();
         }
         return sum;
