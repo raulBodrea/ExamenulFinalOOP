@@ -1,8 +1,10 @@
 
-import Domain.*;
-import Repo.IRepo;
+import Domain.Booking;
+import Domain.Car;
 import Repo.Repo;
-import Service.InvoiceService;
+import Service.BookingService;
+import Service.CarService;
+import Service.Reader;
 import UI.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,26 +20,29 @@ public class Main extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UI/mainWindow.fxml"));
         Parent root = fxmlLoader.load();
+        Reader reader = new Reader();
 
-        Repo repo = new Repo();
+        Repo<Car> repo = new Repo();
+        reader.readFromFile("Cars.bin", repo);
+
+        Repo<Booking> bookings = new Repo<Booking>();
+        reader.readBookingFromFile("Bookings.bin", bookings);
 
 
-        InvoiceService invoiceService = new InvoiceService();
-        invoiceService.addInvoice("1", 1.2, "ing 1, ing2", "11.11.1999");
-        invoiceService.addInvoice("3", 1.2, "ing 1, ing2", "11.11.1998");
-        invoiceService.addInvoice("2", 1.2, "ing 1, ing2", "11.11.1998");
+
+        CarService carService = new CarService(repo);
+        BookingService bookingService = new BookingService(bookings);
+
 
         Controller mainController =  fxmlLoader.getController();
-        mainController.setServices(invoiceService);
+        mainController.setService(carService, bookingService);
 
         primaryStage.setTitle("Invoices manager");
         primaryStage.setScene(new Scene(root, 600, 475));
         primaryStage.show();
     }
 
-
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws Exception{
         launch(args);
 
     }

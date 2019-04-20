@@ -1,50 +1,108 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.CheckBox?>
-<HBox fx:controller="UI.Controller"
-      xmlns:fx="http://javafx.com/fxml" alignment="center">
 
-    <VBox>
-        <TableView fx:id="tblCakes" editable="true">
-            <columns>
-                <TableColumn fx:id="colIdCake" text="Id">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="ID" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="colNameCake" text="Amount">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="sum" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="colIngredientsCake" text="Description">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="description" />
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="colCaloriesCake" text="Date">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="date" />
-                    </cellValueFactory>
-                </TableColumn>
-            </columns>
-        </TableView>
-        <TextField fx:id="txtCakeID" promptText="ID"/>
-        <TextField fx:id="txtCakeName" promptText="Amount"/>
-        <TextField fx:id="txtCakeIngredients" promptText="Description"/>
-        <TextField fx:id="txtCakeCalories" promptText="Date"/>
-        <Button fx:id="btnAddCake" text="Add Cake" onAction="#btnAddCakeClick"/>
-        <TextField fx:id="txtDate" promptText="Date To get all"/>
-        <Button fx:id="btnGetAllInADay" text="Get All in a day" onAction="#btnGetAll"/>
-    </VBox>
+<?import javafx.scene.text.Text?>
+<HBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="UI.Controller">
+    <TabPane prefHeight="400.0" prefWidth="857.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Cars">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="tblCakes" editable="true" layoutX="9.0" layoutY="7.0" prefHeight="400.0" prefWidth="321.0">
+                                <columns>
+                                    <TableColumn fx:id="colIdCake" text="Id">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="id" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="colNameCake" text="Price/Day">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="price" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="colIngredientsCake" text="Model">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="model" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="colCaloriesCake" text="KM">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="km" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
 
+                            <VBox layoutX="330.0" layoutY="88.0">
+                                <TextField fx:id="txtCakeID" promptText="id" />
+                                <TextField fx:id="txtCakeName" promptText="Price/Day" />
+                                <TextField fx:id="txtCakeIngredients" promptText="Model" />
+                                <TextField fx:id="txtCakeCalories" promptText="KM" />
+                                <Button fx:id="btnAddCake" onAction="#btnAddCakeClick" text="Add Car" />
+                                <Text text="Mai jos puteti alege un car ID si sa vedeti cati km are sau cat e income-ul produs."/>
+                                <HBox>
+                                    <Button fx:id="btnGetAllKm" onAction="#btnAddFindKm" text="Get Km" />
+                                    <Button fx:id="btnGetAllIncome" onAction="#btnAddFindIncome" text="Get Income Provided" />
+                                </HBox>
+                                <TextField fx:id="txtCarIdToBeChecked" promptText="KM" />
+
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Bookings">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TableView fx:id="tblBookings" editable="true" layoutX="9.0" layoutY="7.0" prefHeight="400.0" prefWidth="321.0">
+                                <columns>
+                                    <TableColumn fx:id="colIdBooking" text="Id">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="id" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="colCarId" text="Id Masina">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="carId" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="colDaysNumber" text="Nr. Zile">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="days" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="colKmParcursi" text="KM">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="km" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                            <VBox layoutX="330.0" layoutY="88.0">
+                                <TextField fx:id="txtId" promptText="id" />
+                                <TextField fx:id="txtCarId" promptText="Id Masina" />
+                                <TextField fx:id="txtDaysNumber" promptText="Numar Zile" />
+                                <TextField fx:id="txtKm" promptText="KM Parcursi" />
+                                <Button fx:id="btnAddBooking" onAction="#btnAddBookingClick" text="Add Booking" />
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+
+    <VBox />
 </HBox>

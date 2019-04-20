@@ -1,14 +1,14 @@
 package Repo;
 
-import Domain.Invoice;
+import Domain.Car;
+import Domain.IDomain;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Repo {
-    private Map<String, Invoice> repo = new HashMap<>();
+public class Repo<T extends IDomain>{
+    private Map<String, T> repo = new HashMap<>();
 
     /**
      * gets all repo
@@ -17,23 +17,24 @@ public class Repo {
     public Set<String> getAll(){
         return repo.keySet();
     }
+    public void clear(){
+        for(String el: repo.keySet()){
+            repo.remove(el);
+        }
+    }
 
     /**
      * Gets Inv @ ID
      * @param id
-     * @return Invoice
+     * @return Car
      */
-    public Invoice get(String id){
+    public T get(String id){
         return this.repo.get(id);
     }
 
-    /**
-     * adds invoice
-     * @param id
-     * @param invoice
-     */
-    public void add(String id, Invoice invoice){
-        this.repo.put(id, invoice);
+
+    public void add(String id, T el){
+        this.repo.put(id, el);
     }
 
     /**

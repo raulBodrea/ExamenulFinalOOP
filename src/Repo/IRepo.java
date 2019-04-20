@@ -1,9 +1,13 @@
 package Repo;
 
-import Domain.Invoice;
+import Domain.Car;
 
-public interface IRepo {
-    Invoice get(String id);
-    void add(String id, Invoice invoice);
+import java.util.Set;
+
+public interface IRepo<T> {
+    T get(String id);
+    void add(String id, T el);
     void remove(String id);
+    Set getAll();
+    void clear();
 }
